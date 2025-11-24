@@ -4,59 +4,51 @@
 <meta charset="UTF-8">
 <title>مانده تا آزمون جامع علمی</title>
 
+<!-- فونت وزیر -->
+<link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.0/Vazirmatn-font-face.css" rel="stylesheet" />
+
 <style>
-/* --- فونت وزیر نسخه پایدار و همسان برای همه دستگاه‌ها --- */
-@font-face {
-  font-family: 'Vazir';
-  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/Vazir.woff2') format('woff2');
-  font-weight: normal;
-}
-@font-face {
-  font-family: 'Vazir';
-  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/Vazir-Bold.woff2') format('woff2');
-  font-weight: bold;
-}
-
 body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f0f0;
-  font-family: 'Vazir', sans-serif;
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f0f0f0;
+  font-family: "Vazirmatn", sans-serif;
 }
 
-/* لوگو بزرگ‌تر */
+/* باکس اصلی — بزرگ‌تر، فشرده‌تر */
+.container {
+  background: linear-gradient(135deg, #ff8f38, #ffb56b);
+  padding: 45px;
+  border-radius: 28px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+  color: white;
+  text-align: center;
+  min-width: 350px;
+}
+
+/* لوگو — 2× بزرگ‌تر */
 .logo {
   width: 280px;
   display: block;
   margin: 0 auto 25px auto;
 }
 
-/* کادر تایمر بزرگ‌تر */
-.container {
-  background: linear-gradient(135deg, #ff9f43, #ff6f00);
-  padding: 70px;
-  border-radius: 35px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.22);
-  color: white;
-  text-align: center;
-  min-width: 400px;
-}
-
+/* عنوان — بزرگ‌تر */
 .title {
   font-size: 32px;
-  margin-bottom: 35px;
-  font-weight: bold;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
-/* تایمر خیلی بزرگ‌تر و خواناتر */
+/* بخش تایمر — فاصله کمتر، اندازه بزرگ‌تر */
 .timer {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  font-size: 54px;
+  gap: 35px;
+  font-size: 44px;
   font-weight: bold;
 }
 
@@ -67,82 +59,59 @@ body {
 }
 
 .label {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-/* نسخه مخصوص گوشی‌های کوچک */
-@media (max-width: 420px) {
-  .container {
-    padding: 55px;
-    min-width: 320px;
-  }
-  .timer {
-    font-size: 46px;
-    gap: 25px;
-  }
-  .logo {
-    width: 120px;
-  }
-  .title {
-    font-size: 28px;
-  }
+  font-size: 18px;
+  margin-top: 8px;
+  font-weight: 500;
 }
 </style>
 </head>
+
 <body>
+<div class="container">
 
-<div>
-  <img src="logo.png" class="logo">
-  <div class="container">
-    <div class="title">مانده تا آزمون جامع علمی</div>
+  <!-- لوگوی مینیمال -->
+  <img src="لوگو بدون پس زمینه.png" class="logo">
 
-    <div class="timer">
-      <div class="unit">
-        <span id="days">۰</span>
-        <span class="label">روز</span>
-      </div>
+  <div class="title">مانده تا آزمون جامع علمی</div>
 
-      <div class="unit">
-        <span id="hours">۰۰</span>
-        <span class="label">ساعت</span>
-      </div>
-
-      <div class="unit">
-        <span id="minutes">۰۰</span>
-        <span class="label">دقیقه</span>
-      </div>
-
-      <div class="unit">
-        <span id="seconds">۰۰</span>
-        <span class="label">ثانیه</span>
-      </div>
+  <div class="timer">
+    <div class="unit">
+      <span id="days">0</span>
+      <span class="label">روز</span>
     </div>
-
+    <div class="unit">
+      <span id="hours">00</span>
+      <span class="label">ساعت</span>
+    </div>
+    <div class="unit">
+      <span id="minutes">00</span>
+      <span class="label">دقیقه</span>
+    </div>
+    <div class="unit">
+      <span id="seconds">00</span>
+      <span class="label">ثانیه</span>
+    </div>
   </div>
+
 </div>
 
 <script>
-function toPersian(num) {
-  return num.toString().replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
-}
-
 function updateTimer() {
-  const target = new Date('2025-12-09T10:00:00'); // تاریخ نهایی
+  const target = new Date('2025-12-09T10:00:00');
   const now = new Date();
   const diff = target - now;
 
   if (diff <= 0) return;
 
-  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((diff / (1000 * 60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
+  const day = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hour = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minute = Math.floor((diff / (1000 * 60)) % 60);
+  const second = Math.floor((diff / 1000) % 60);
 
-  document.getElementById('days').textContent = toPersian(d);
-  document.getElementById('hours').textContent = toPersian(String(h).padStart(2,'0'));
-  document.getElementById('minutes').textContent = toPersian(String(m).padStart(2,'0'));
-  document.getElementById('seconds').textContent = toPersian(String(s).padStart(2,'0'));
+  document.getElementById('days').textContent = day;
+  document.getElementById('hours').textContent = String(hour).padStart(2,'0');
+  document.getElementById('minutes').textContent = String(minute).padStart(2,'0');
+  document.getElementById('seconds').textContent = String(second).padStart(2,'0');
 }
 
 setInterval(updateTimer, 1000);
