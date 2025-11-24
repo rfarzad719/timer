@@ -5,7 +5,7 @@
 <title>مانده تا آزمون جامع علمی</title>
 
 <style>
-/* --- فونت وزیر برای یکسان بودن روی همه دستگاه‌ها --- */
+/* --- فونت وزیر ــ یکسان روی تمام دستگاه‌ها --- */
 @font-face {
   font-family: 'Vazir';
   src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/Vazir.woff2') format('woff2');
@@ -34,7 +34,7 @@ body {
   margin: 0 auto 25px auto;
 }
 
-/* مربع اصلی */
+/* مربع */
 .container {
   background: linear-gradient(135deg, #ff9f43, #ff6f00);
   padding: 140px;
@@ -42,22 +42,22 @@ body {
   box-shadow: 0 30px 70px rgba(0,0,0,0.22);
   color: white;
   text-align: center;
-  min-width: 300px;
+  min-width: 400px;
 }
 
-/* عنوان بزرگ‌تر و بهتر */
+/* عنوان ـ بزرگ حالت B */
 .title {
-  font-size: 100px;   /* قبل: 32px */
-  margin-bottom: 50px;
+  font-size: 60px;     /* حالت B */
+  margin-bottom: 45px;
   font-weight: bold;
 }
 
-/* تایمر — کمی بزرگ‌تر */
+/* تایمر ـ بزرگ حالت B */
 .timer {
   display: flex;
   justify-content: center;
-  gap: 50px;
-  font-size: 100px;   /* قبل: 70px */
+  gap: 55px;
+  font-size: 120px;    /* حالت B */
   font-weight: bold;
 }
 
@@ -67,12 +67,13 @@ body {
   align-items: center;
 }
 
+/* لیبل‌ها */
 .label {
-  font-size: 22px;  /* کمی بزرگ‌تر */
+  font-size: 35px;     /* حالت B */
   margin-top: 10px;
 }
 
-/* نسخه برای گوشی */
+/* نسخه موبایل */
 @media (max-width: 420px) {
   .container {
     padding: 55px;
@@ -87,6 +88,9 @@ body {
   }
   .title {
     font-size: 30px;
+  }
+  .label {
+    font-size: 20px;
   }
 }
 </style>
