@@ -1,93 +1,77 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-<meta charset="UTF-8">
-<title>مانده تا آزمون جامع علمی</title>
-<style>
-body {
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#f0f0f0;
-  font-family: sans-serif;
-}
-.container {
-  background: linear-gradient(135deg, #7f5af0, #a78bfa);
-  padding:40px;
-  border-radius:25px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-  color:white;
-  text-align:center;
-  min-width:300px;
-}
-.title {
-  font-size:24px;
-  margin-bottom:20px;
-}
-.timer {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  font-size:32px;
-  font-weight:bold;
-}
-.unit {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.label {
-  font-size:14px;
-  margin-top:5px;
-}
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d0d12;
+            font-family: "Segoe UI", sans-serif;
+            direction: rtl;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #7f4cff, #b084ff);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 25px rgba(130, 90, 255, 0.6);
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .timer {
+            font-size: 45px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-family: monospace;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-  <div class="title">مانده تا آزمون جامع علمی</div>
-  <div class="timer">
-    <div class="unit">
-      <span id="days">0</span>
-      <span class="label">روز</span>
+    <div class="card">
+        <h2>مانده تا آزمون جامع علمی</h2>
+        <div id="timer" class="timer">00:00:00:00</div>
     </div>
-    <div class="unit">
-      <span id="hours">00</span>
-      <span class="label">ساعت</span>
-    </div>
-    <div class="unit">
-      <span id="minutes">00</span>
-      <span class="label">دقیقه</span>
-    </div>
-    <div class="unit">
-      <span id="seconds">00</span>
-      <span class="label">ثانیه</span>
-    </div>
-  </div>
-</div>
 
-<script>
-function updateTimer() {
-  const target = new Date('2025-12-08T00:00:00'); 
-  const now = new Date();
-  const diff = target - now;
+    <script>
+        function updateTimer() {
+            // 🔥 تاریخ هدف: 10 صبح 18 آذر 1404
+            const target = new Date("December 9, 2025 10:00:00").getTime();
+            const now = Date.now();
+            const diff = target - now;
 
-  if (diff <= 0) return;
+            if (diff <= 0) {
+                document.getElementById("timer").innerHTML = "00:00:00:00";
+                return;
+            }
 
-  const day = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hour = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minute = Math.floor((diff / (1000 * 60)) % 60);
-  const second = Math.floor((diff / 1000) % 60);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
 
-  document.getElementById('days').textContent = day;
-  document.getElementById('hours').textContent = String(hour).padStart(2,'0');
-  document.getElementById('minutes').textContent = String(minute).padStart(2,'0');
-  document.getElementById('seconds').textContent = String(second).padStart(2,'0');
-}
+            document.getElementById("timer").innerHTML =
+                String(days).padStart(2, "0") + ":" +
+                String(hours).padStart(2, "0") + ":" +
+                String(minutes).padStart(2, "0") + ":" +
+                String(seconds).padStart(2, "0");
+        }
 
-setInterval(updateTimer, 1000);
-updateTimer();
-</script>
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
 </body>
 </html>
