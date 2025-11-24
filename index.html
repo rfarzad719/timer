@@ -3,10 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>مانده تا آزمون جامع علمی</title>
+
 <style>
+/* --- فونت وزیر نسخه پایدار و همسان برای همه دستگاه‌ها --- */
 @font-face {
-  font-family: 'Vazirmatn';
-  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn/Vazirmatn[wght].woff2') format('woff2');
+  font-family: 'Vazir';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/Vazir.woff2') format('woff2');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Vazir';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/Vazir-Bold.woff2') format('woff2');
+  font-weight: bold;
 }
 
 body {
@@ -16,35 +24,39 @@ body {
   justify-content: center;
   align-items: center;
   background: #f0f0f0;
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: 'Vazir', sans-serif;
 }
 
+/* لوگو بزرگ‌تر */
 .logo {
-  width: 90px;
+  width: 140px;
   display: block;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 25px auto;
 }
 
+/* کادر تایمر بزرگ‌تر */
 .container {
   background: linear-gradient(135deg, #ff9f43, #ff6f00);
-  padding: 40px;
-  border-radius: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  padding: 70px;
+  border-radius: 35px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.22);
   color: white;
   text-align: center;
-  min-width: 300px;
+  min-width: 400px;
 }
 
 .title {
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 32px;
+  margin-bottom: 35px;
+  font-weight: bold;
 }
 
+/* تایمر خیلی بزرگ‌تر و خواناتر */
 .timer {
   display: flex;
   justify-content: center;
-  gap: 22px;
-  font-size: 32px;
+  gap: 40px;
+  font-size: 54px;
   font-weight: bold;
 }
 
@@ -55,8 +67,26 @@ body {
 }
 
 .label {
-  font-size: 14px;
-  margin-top: 5px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* نسخه مخصوص گوشی‌های کوچک */
+@media (max-width: 420px) {
+  .container {
+    padding: 55px;
+    min-width: 320px;
+  }
+  .timer {
+    font-size: 46px;
+    gap: 25px;
+  }
+  .logo {
+    width: 120px;
+  }
+  .title {
+    font-size: 28px;
+  }
 }
 </style>
 </head>
@@ -88,6 +118,7 @@ body {
         <span class="label">ثانیه</span>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -97,7 +128,7 @@ function toPersian(num) {
 }
 
 function updateTimer() {
-  const target = new Date('2025-12-09T10:00:00'); // ☑ تاریخ +1 روز شده
+  const target = new Date('2025-12-09T10:00:00'); // تاریخ نهایی
   const now = new Date();
   const diff = target - now;
 
