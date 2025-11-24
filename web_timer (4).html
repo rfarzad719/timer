@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>مانده تا آزمون جامع علمی</title>
+  <style>
+    :root{--bg:#071029;--card:#0b1220;--accent1:#7c3aed;--accent2:#4f46e5}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#020617 0%, #071029 100%);font-family:system-ui,'IRANSans','Segoe UI',Tahoma;direction:rtl}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:720px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:18px;padding:28px;box-shadow:0 10px 40px rgba(12,15,30,0.6);}
+    .inner{background:rgba(3,6,14,0.6);padding:26px;border-radius:14px;color:#f3f7ff;text-align:center}
+    h1{margin:0 0 18px 0;font-size:26px;font-weight:700}
+    .time{display:flex;gap:22px;justify-content:center;align-items:center}
+    .block{min-width:88px}
+    .num{font-size:38px;font-weight:800;letter-spacing:0.6px}
+    .label{font-size:16px;color:rgba(255,255,255,0.9);font-weight:600;margin-top:6px}
+    @media (max-width:520px){.num{font-size:28px}.block{min-width:62px}.card{padding:18px}.inner{padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" aria-hidden="false">
+      <div class="inner" role="region" aria-label="تایمر">
+        <h1>مانده تا آزمون جامع علمی</h1>
+        <div class="time" aria-hidden="false">
+          <div class="block"><div id="days" class="num" aria-live="polite">0</div><div class="label">روز</div></div>
+          <div class="block"><div id="hours" class="num" aria-live="polite">00</div><div class="label">ساعت</div></div>
+          <div class="block"><div id="minutes" class="num" aria-live="polite">00</div><div class="label">دقیقه</div></div>
+          <div class="block"><div id="seconds" class="num" aria-live="polite">00</div><div class="label">ثانیه</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // تایمر فقط خواندنی و نمایشگر شمارش معکوس تا ۱۸ آذر ۱۴۰۴ (۸ دسامبر ۲۰۲۵)
+    const target = new Date('2025-12-08T00:00:00');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    function update(){
+      const now = new Date();
+      let diff = target - now;
+      if(diff < 0){
+        // اگر گذشته، صفر نمایش بده
+        daysEl.textContent = 0;
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        return;
+      }
+      const sec = Math.floor(diff / 1000) % 60;
+      const min = Math.floor(diff / 60000) % 60;
+      const hr = Math.floor(diff / 3600000) % 24;
+      const day = Math.floor(diff / 86400000);
+      daysEl.textContent = String(day).padStart(1,'0');
+      hoursEl.textContent = String(hr).padStart(2,'0');
+      minutesEl.textContent = String(min).padStart(2,'0');
+      secondsEl.textContent = String(sec).padStart(2,'0');
+    }
+
+    update();
+    setInterval(update, 1000);
+  </script>
+</body>
+</html>
