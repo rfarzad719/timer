@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
 <meta charset="UTF-8">
 <title>مانده تا آزمون جامع علمی</title>
@@ -45,32 +45,36 @@ body {
   min-width: 400px;
 }
 
-/* عنوان ـ بزرگ حالت B */
+/* عنوان */
 .title {
-  font-size: 60px;     /* حالت B */
+  font-size: 60px;
   margin-bottom: 45px;
   font-weight: bold;
 }
 
-/* تایمر ـ بزرگ حالت B */
+/* تایمر — جهت چپ‌به‌راست */
 .timer {
   display: flex;
   justify-content: center;
+  flex-direction: row;
   gap: 55px;
-  font-size: 120px;    /* حالت B */
+  font-size: 120px;
   font-weight: bold;
+  direction: ltr;   /* ← کل مجموعه چپ به راست */
 }
 
 .unit {
   display: flex;
   flex-direction: column;
   align-items: center;
+  direction: ltr; /* ← عدد + لیبل چپ به راست */
 }
 
 /* لیبل‌ها */
 .label {
-  font-size: 35px;     /* حالت B */
+  font-size: 35px;
   margin-top: 10px;
+  direction: ltr;
 }
 
 /* نسخه موبایل */
@@ -133,7 +137,7 @@ function toPersian(num) {
 }
 
 function updateTimer() {
-  const target = new Date('2025-12-09T10:00:00'); // تاریخ نهایی
+  const target = new Date('2025-12-09T10:00:00');
   const now = new Date();
   const diff = target - now;
 
